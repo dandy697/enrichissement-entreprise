@@ -219,10 +219,21 @@ function renderTable(data, prepend = false) {
             sectorSelect += `</div>`;
 
             sectorDisplay = sectorSelect;
-
         } else {
-            // Text + Pencil
-            sectorDisplay = `<div class="industry-wrapper"><span class="industry-badge">${sector}</span> <i class="fa-solid fa-pen edit-icon" onclick="enableEdit(${index})"></i></div>`;
+            // NEW: Competitor Badge Logic
+            let competitorBadge = "";
+            if (row["IsCompetitor"]) {
+                competitorBadge = `<span class="competitor-alert" title="Concurrent Identifié">⚠️ Concurrent</span> `;
+            }
+
+            // Normal Display mode
+            sectorDisplay = `
+                <div class="row-display" onclick="enableEdit(${index})">
+                    ${competitorBadge}
+                    <span>${sector}</span>
+                    <i class="fa-solid fa-pen-to-square edit-icon"></i>
+                </div>
+            `;
         }
 
         tr.innerHTML = `

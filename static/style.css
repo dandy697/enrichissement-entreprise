@@ -635,3 +635,23 @@ td:hover .edit-icon {
     outline: none;
     box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
 }
+
+/* Competitor Alert Badge */
+.competitor-alert {
+    background-color: #fee2e2;
+    color: #ef4444;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-right: 8px;
+    border: 1px solid #fecaca;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.competitor-alert:hover {
+    background-color: #fca5a5;
+    cursor: help;
+}
