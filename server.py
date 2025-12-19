@@ -127,7 +127,7 @@ SECTOR_CONFIG = {
     },
     "Finance / Real Estate": {
         "naf_prefixes": ["64", "66", "68"],
-        "keywords": ["finance", "immobilier", "investissement", "gestion d'actifs", "courtier", "syndic", "promoteur", "real estate", "realty", "property", "logement", "immo", "wealth", "fintech", "payment", "trading", "crypto", "blockchain", "vc", "private equity", "fund", "foncia", "nexity"]
+        "keywords": ["finance", "financial", "services financiers", "immobilier", "investissement", "gestion d'actifs", "courtier", "syndic", "promoteur", "real estate", "realty", "property", "logement", "immo", "wealth", "fintech", "payment", "trading", "crypto", "blockchain", "vc", "private equity", "fund", "foncia", "nexity"]
     },
     "Food / Beverages": {
         "naf_prefixes": ["10", "11"],
@@ -340,6 +340,9 @@ NORMALIZED_OVERRIDES["BNB"] = "BNP PARIBAS"
 NORMALIZED_OVERRIDES["BNPPARIBAS"] = "BNP PARIBAS"
 NORMALIZED_OVERRIDES["BNP-PARIBAS"] = "BNP PARIBAS"
 NORMALIZED_OVERRIDES["FREEPRO"] = "FREE"
+NORMALIZED_OVERRIDES["GROUPAGRICA"] = "GROUPE AGRICA"
+NORMALIZED_OVERRIDES["MANOMANO"] = "COLIBRI SAS"
+NORMALIZED_OVERRIDES["COLIBRI"] = "COLIBRI SAS"
 
 def get_region_from_dept(zip_code):
     if not zip_code or len(zip_code) < 2: return "Autre"
@@ -370,7 +373,23 @@ def extract_company_from_input(input_str):
                     return input_str, False 
         except:
             pass
+            pass
     
+    # Heuristics for "Copy-Paste" from directories (Pappers, Societe.com, etc.)
+    # Example: "TRANSAVIA a été créée le 1 janvier 1979..." -> "TRANSAVIA"
+    # Example: "BNP PARIBAS est une société anonyme..." -> "BNP PARIBAS"
+    
+    # Regex 1: "X a été créée le"
+    match_creation = re.search(r'^(.+?)\s+a été créée le', company, re.IGNORECASE)
+    if match_creation:
+        company = match_creation.group(1)
+        
+    # Regex 2: "X est une (société|entreprise|association)"
+    if not match_creation:
+        match_est = re.search(r'^(.+?)\s+est une\s+(société|entreprise|association)', company, re.IGNORECASE)
+        if match_est:
+            company = match_est.group(1)
+
     company = company.replace("-", " ").replace(".", " ")
     company = re.sub(r'(group|france|partners|holdings|corp|inc|ltd)$', r' \1', company, flags=re.IGNORECASE)
     
@@ -471,6 +490,9 @@ def categorize_company_logic(raw_input):
         if upper_name_clean in NORMALIZED_OVERRIDES:
              mapped_key = NORMALIZED_OVERRIDES[upper_name_clean]
              target_override = GLOBAL_OVERRIDES.get(mapped_key)
+             # KEY FIX: If we have a better name (Normalized), use it for API search!
+             # This helps "groupagrica" -> "GROUPE AGRICA" find results even if no hardcoded override exists.
+             company_name = mapped_key # Update for API search
         elif upper_name_clean in GLOBAL_OVERRIDES:
              target_override = GLOBAL_OVERRIDES[upper_name_clean]
         
