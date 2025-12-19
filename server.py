@@ -91,95 +91,95 @@ DEPT_TO_REGION = {
 SECTOR_CONFIG = {
     "Agriculture / Livestock / Seafood": {
         "naf_prefixes": ["01", "02", "03"],
-        "keywords": ["agriculture", "élevage", "pêche", "agricole", "ferme", "bio", "tracteur", "champs", "vigne", "viticulture", "horticulture", "maraichage", "bétail", "aquaculture", "farming", "livestock", "seafood", "crops"]
+        "keywords": ["agriculture", "élevage", "pêche", "agricole", "ferme", "bio", "tracteur", "champs", "vigne", "viticulture", "horticulture", "maraichage", "bétail", "aquaculture", "farming", "livestock", "seafood", "crops", "agri", "agro", "vignoble", "éleveur", "céréales", "semences", "fisheries"]
     },
     "Banking": {
         "naf_prefixes": ["641"],
-        "keywords": ["banque", "crédit", "bancaire", "compte", "livret", "cb", "bank", "banking", "loan", "credit", "bnp", "société générale", "crédit agricole", "bpce"]
+        "keywords": ["banque", "crédit", "bancaire", "compte", "livret", "cb", "bank", "banking", "loan", "credit", "bnp", "société générale", "crédit agricole", "bpce", "lender", "mortgage", "prêt", "emprunt", "financement", "épargne"]
     },
     "Chemicals": {
         "naf_prefixes": ["20"],
-        "keywords": ["chimie", "laboratoire", "molécules", "réactif", "polymère", "plastique", "chimique", "petrochemical", "chemicals", "chemistry", "lab", "solvay", "arkema", "air liquide"]
+        "keywords": ["chimie", "laboratoire", "molécules", "réactif", "polymère", "plastique", "chimique", "petrochemical", "chemicals", "chemistry", "lab", "solvay", "arkema", "air liquide", "gas", "gaz", "azote", "hydrogène", "composites", "resins"]
     },
     "Communication / Media & Entertainment / Telecom": {
         "naf_prefixes": ["59", "60", "61", "63"],
-        "keywords": ["télécom", "média", "publicité", "fibre", "internet", "presse", "journal", "tv", "radio", "marketing", "agence", "communication", "entertainment", "telecom", "broadcasting", "advertising", "media", "orange", "sfr", "bouygues", "free", "publicis", "havas"]
+        "keywords": ["télécom", "média", "publicité", "fibre", "internet", "presse", "journal", "tv", "radio", "marketing", "agence", "communication", "entertainment", "telecom", "broadcasting", "advertising", "media", "orange", "sfr", "bouygues", "free", "publicis", "havas", "digital agency", "rédaction", "news", "contenu", "publishing", "édition"]
     },
     "Construction": {
         "naf_prefixes": ["41", "42", "43"],
-        "keywords": ["btp", "construction", "bâtiment", "génie civil", "infrastructure", "travaux", "architecture", "maçonnerie", "électicité", "plomberie", "architect", "builder", "contractor", "civil", "renovation", "vinci", "eiffage", "bouygues construction"]
+        "keywords": ["btp", "construction", "bâtiment", "génie civil", "infrastructure", "travaux", "architecture", "maçonnerie", "électicité", "plomberie", "architect", "builder", "contractor", "civil", "renovation", "vinci", "eiffage", "bouygues construction", "rénovation", "agencement", "menuiserie", "charpente", "promoteur", "immobilier neuf", "engineering", "ingénierie bâtiment"]
     },
     "Consulting / IT Services": {
         "naf_prefixes": ["62", "631", "582", "702", "692", "7112", "712", "732", "74"],
-        "keywords": ["conseil", "consulting", "esn", "stratégie", "audit", "expertise", "ingénierie", "rub", "management", "digital", "transformation", "it services", "système d'information", "data", "advisory", "capgemini", "deloitte", "kpmg", "pwc", "mckinsey", "bain", "bcg", "accenture", "sogeti", "sopra", "wavestone", "alteca", "umanis"]
+        "keywords": ["conseil", "consulting", "esn", "stratégie", "audit", "expertise", "ingénierie", "rub", "management", "digital", "transformation", "it services", "système d'information", "data", "advisory", "capgemini", "deloitte", "kpmg", "pwc", "mckinsey", "bain", "bcg", "accenture", "sogeti", "sopra", "wavestone", "alteca", "umanis", "devops", "cloud computing", "cybersécurité", "business intelligence", "big data", "agile", "scrum"]
     },
     "CPG (Consumer Packaged Goods)": {
         "naf_prefixes": ["204"],
-        "keywords": ["fmcg", "biens de consommation", "hygiène", "produits ménagers", "cosmétique", "beauté", "parfum", "shampoing", "savon", "lessive", "cpg", "consumer goods", "l'oréal", "procter", "gamble", "unilever", "danone", "nestlé", "henkel"]
+        "keywords": ["fmcg", "biens de consommation", "hygiène", "produits ménagers", "cosmétique", "beauté", "parfum", "shampoing", "savon", "lessive", "cpg", "consumer goods", "l'oréal", "procter", "gamble", "unilever", "danone", "nestlé", "henkel", "persil", "dash", "ariel", "schwarzkopf", "nivea", "dove", "maquillage", "makeup", "skincare", "soin"]
     },
     "Education": {
         "naf_prefixes": ["85"],
-        "keywords": ["éducation", "formation", "école", "université", "training", "learning", "elearning", "edtech", "campus", "formation continue", "school", "university", "academy", "college"]
+        "keywords": ["éducation", "formation", "école", "université", "training", "learning", "elearning", "edtech", "campus", "formation continue", "school", "university", "academy", "college", "enseignement", "pédagogie", "cours", "tutoring", "soutien scolaire", "mba", "master", "licence"]
     },
     "Energy / Utilities": {
         "naf_prefixes": ["35", "36", "37", "38", "39"],
-        "keywords": ["énergie", "électricité", "gaz", "eau", "déchets", "environnement", "recyclage", "solaire", "éolien", "nucléaire", "oil", "petrol", "renewables", "green", "carbon", "hydrogen", "edf", "engie", "total", "veolia", "suez"]
+        "keywords": ["énergie", "électricité", "gaz", "eau", "déchets", "environnement", "recyclage", "solaire", "éolien", "nucléaire", "oil", "petrol", "renewables", "green", "carbon", "hydrogen", "edf", "engie", "total", "veolia", "suez", "photovoltaïque", "biomasse", "hydro", "grid", "réseau électrique", "assainissement", "waste management", "energy"]
     },
     "Finance / Real Estate": {
         "naf_prefixes": ["64", "66", "68"],
-        "keywords": ["finance", "financial", "services financiers", "immobilier", "investissement", "gestion d'actifs", "courtier", "syndic", "promoteur", "real estate", "realty", "property", "logement", "immo", "wealth", "fintech", "payment", "trading", "crypto", "blockchain", "vc", "private equity", "fund", "foncia", "nexity"]
+        "keywords": ["finance", "financial", "services financiers", "immobilier", "investissement", "gestion d'actifs", "courtier", "syndic", "promoteur", "real estate", "realty", "property", "logement", "immo", "wealth", "fintech", "payment", "trading", "crypto", "blockchain", "vc", "private equity", "fund", "foncia", "nexity", "asset management", "patrimoine", "défiscalisation", "location", "vente immobilière", "agency", "investor", "capital", "holding"]
     },
     "Food / Beverages": {
         "naf_prefixes": ["10", "11"],
-        "keywords": ["agroalimentaire", "aliments", "boissons", "food", "beverage", "vin", "spiritueux", "bière", "champagne", "nutrition", "snack", "dairy", "laitier", "viande", "boulangerie", "traiteur"]
+        "keywords": ["agroalimentaire", "aliments", "boissons", "food", "beverage", "vin", "spiritueux", "bière", "champagne", "nutrition", "snack", "dairy", "laitier", "viande", "boulangerie", "traiteur", "épicerie", "confiserie", "chocolat", "surgelés", "frozen", "drinks", "juice", "jus", "distillery", "brewery", "winery", "bio food", "organic"]
     },
     "Healthcare / Medical Services": {
         "naf_prefixes": ["86", "87", "88"],
-        "keywords": ["santé", "clinique", "hôpital", "soins", "médecin", "infirmier", "ehpad", "médical", "chirurgie", "patient", "healthcare", "medical", "hospital", "clinic", "care", "doctor", "diagnostic", "radiologie", "dentaire", "kine", "ramsay", "elsan"]
+        "keywords": ["santé", "clinique", "hôpital", "soins", "médecin", "infirmier", "ehpad", "médical", "chirurgie", "patient", "healthcare", "medical", "hospital", "clinic", "care", "doctor", "diagnostic", "radiologie", "dentaire", "kine", "ramsay", "elsan", "korian", "orpea", "nursing", "home care", "aide à domicile", "analyse", "labo", "biologie"]
     },
     "Hotels / Restaurants": {
         "naf_prefixes": ["55", "56"],
-        "keywords": ["hôtel", "restaurant", "tourisme", "hébergement", "camping", "voyage", "bar", "café", "brasserie", "cuisine", "hotel", "hospitality", "tourism", "restaurant", "catering", "accor", "club med", "sodexo", "elior"]
+        "keywords": ["hôtel", "restaurant", "tourisme", "hébergement", "camping", "voyage", "bar", "café", "brasserie", "cuisine", "hotel", "hospitality", "tourism", "restaurant", "catering", "accor", "club med", "sodexo", "elior", "travel", "resort", "vacances", "booking", "chef", "gastronomie", "food service"]
     },
     "Insurance / Mutual Health Insurance": {
         "naf_prefixes": ["65"],
-        "keywords": ["assurance", "mutuelle", "courtage", "assureur", "prévoyance", "risques", "insurance", "underwriting", "axa", "allianz", "generali", "maif", "macif", "groupama", "malakoff"]
+        "keywords": ["assurance", "mutuelle", "courtage", "assureur", "prévoyance", "risques", "insurance", "underwriting", "axa", "allianz", "generali", "maif", "macif", "groupama", "malakoff", "ag2r", "harmonie", "protection sociale", "sinistre", "broker", "reinsurance", "réassurance"]
     },
     "Luxury": {
         "naf_prefixes": ["141", "142", "151", "152"],
-        "keywords": ["luxe", "prestige", "haute couture", "joaillerie", "maroquinerie", "palace", "luxury", "fashion", "jewelry", "premium", "high-end", "mode", "vêtement", "chaussures", "shoes", "wear", "apparel", "lvmh", "kering", "hermès", "chanel", "dior", "vuitton", "gucci", "prada"]
+        "keywords": ["luxe", "prestige", "haute couture", "joaillerie", "maroquinerie", "palace", "luxury", "fashion", "jewelry", "premium", "high-end", "mode", "vêtement", "chaussures", "shoes", "wear", "apparel", "lvmh", "kering", "hermès", "chanel", "dior", "vuitton", "gucci", "prada", "rolex", "cartier", "bijoux", "diamant", "montres", "watches"]
     },
     "Manufacturing / Industry": {
         "naf_prefixes": ["13", "14", "15", "16", "17", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33"],
-        "keywords": ["industrie", "usine", "fabrication", "mécanique", "métallurgie", "plasturgie", "assemblage", "production", "machine", "outil", "industriel", "manufacturing", "industry", "factory", "plant", "metal", "machinery", "automotive", "aéronautique", "aerospace", "defense", "textile", "imprimerie", "packaging", "saint-gobain", "schneider", "legrand", "michelin"]
+        "keywords": ["industrie", "usine", "fabrication", "mécanique", "métallurgie", "plasturgie", "assemblage", "production", "machine", "outil", "industriel", "manufacturing", "industry", "factory", "plant", "metal", "machinery", "automotive", "aéronautique", "aerospace", "defense", "textile", "imprimerie", "packaging", "saint-gobain", "schneider", "legrand", "michelin", "stellantis", "renault", "airbus", "thales", "safran", "dassault", "alstom", "composants"]
     },
     "Not For Profit": {
         "naf_prefixes": ["94", "91"],
-        "keywords": ["association", "fondation", "ong", "non-profit", "charity", "bénévole", "social", "humanitaire", "syndicat", "union", "club", "croix rouge", "secours populaire"]
+        "keywords": ["association", "fondation", "ong", "non-profit", "charity", "bénévole", "social", "humanitaire", "syndicat", "union", "club", "croix rouge", "secours populaire", "médecins sans frontières", "unicef", "caritas", "aide", "solidarité", "non lucratif"]
     },
     "Pharmaceutics": {
         "naf_prefixes": ["21"],
-        "keywords": ["pharmacie", "médicament", "biotech", "laboratoire", "vaccin", "recherche", "molécule", "thérapie", "pharmaceutical", "pharma", "drug", "biotechnology", "medicine", "lifescience", "sanofi", "servier", "pfizer", "moderna"]
+        "keywords": ["pharmacie", "médicament", "biotech", "laboratoire", "vaccin", "recherche", "molécule", "thérapie", "pharmaceutical", "pharma", "drug", "biotechnology", "medicine", "lifescience", "sanofi", "servier", "pfizer", "moderna", "astrazeneca", "bayer", "novartis", "roche", "lilly", "clinical trials", "essais cliniques"]
     },
     "Public administration & government": {
         "naf_prefixes": ["84"],
-        "keywords": ["mairie", "préfecture", "ministère", "collectivité", "public", "etat", "government", "administration", "caisse", "caf", "urssaf", "pole emploi", "france travail", "ambassade", "consulat"]
+        "keywords": ["mairie", "préfecture", "ministère", "collectivité", "public", "etat", "government", "administration", "caisse", "caf", "urssaf", "pole emploi", "france travail", "ambassade", "consulat", "département", "région", "agglomération", "commune", "service public"]
     },
     "Retail": {
         "naf_prefixes": ["45", "46", "47"],
-        "keywords": ["commerce", "vente", "magasin", "boutique", "supermarché", "distribution", "retail", "store", "shop", "e-commerce", "marketplace", "grossiste", "grand magasin", "shopping", "mall", "outlet", "franchise", "carrefour", "auchan", "leclerc", "decathlon", "fnac", "darty", "amazon", "cdiscount"]
+        "keywords": ["commerce", "vente", "magasin", "boutique", "supermarché", "distribution", "retail", "store", "shop", "e-commerce", "marketplace", "grossiste", "grand magasin", "shopping", "mall", "outlet", "franchise", "carrefour", "auchan", "leclerc", "decathlon", "fnac", "darty", "amazon", "cdiscount", "bricolage", "jardinage", "ameublement", "fashion retail", "grocery"]
     },
     "HR / Recruitment / Interim": {
         "naf_prefixes": ["78"],
-        "keywords": ["intérim", "recrutement", "rh", "ressources humaines", "agence d'emploi", "staffing", "recruitment", "chasseur de tête", "talent", "manpower", "adecco", "randstad", "crit", "synergie", "proman"]
+        "keywords": ["intérim", "recrutement", "rh", "ressources humaines", "agence d'emploi", "staffing", "recruitment", "chasseur de tête", "talent", "manpower", "adecco", "randstad", "crit", "synergie", "proman", "michael page", "hays", "robert half", "headhunting", "jobs", "emplois", "carrière"]
     },
     "Tech / Software": {
         "naf_prefixes": ["582", "6201", "6312", "262"],
-        "keywords": ["logiciel", "saas", "tech", "software", "application", "ia", "intelligence artificielle", "cloud", "développement", "web", "app", "cybersecurity", "platform", "technology", "developer", "electronics", "hardware", "computer", "start-up", "google", "microsoft", "apple", "meta", "aws", "salesforce", "sap", "oracle"]
+        "keywords": ["logiciel", "saas", "tech", "software", "application", "ia", "intelligence artificielle", "cloud", "développement", "web", "app", "cybersecurity", "platform", "technology", "developer", "electronics", "hardware", "computer", "start-up", "google", "microsoft", "apple", "meta", "aws", "salesforce", "sap", "oracle", "it", "informatique", "data science", "machine learning", "coding", "programmation", "algorithme", "api"]
     },
     "Transportation, Logistics & Storage": {
         "naf_prefixes": ["49", "50", "51", "52", "53"],
-        "keywords": ["transport", "logistique", "fret", "livraison", "messagerie", "entrepôt", "supply chain", "shipping", "transit", "colis", "airline", "aérien", "avion", "bateau", "compagnie aérienne", "rail", "ferroviaire", "maritime", "port", "sncf", "air france", "maersk", "cma cgm", "dhl", "fedex", "ups"]
+        "keywords": ["transport", "logistique", "fret", "livraison", "messagerie", "entrepôt", "supply chain", "shipping", "transit", "colis", "airline", "aérien", "avion", "bateau", "compagnie aérienne", "rail", "ferroviaire", "maritime", "port", "sncf", "air france", "maersk", "cma cgm", "dhl", "fedex", "ups", "geodis", "bolloré", "xpo", "container", "cargo", "logistics"]
     }
 }
 
@@ -234,6 +234,7 @@ GLOBAL_OVERRIDES = {
     "BNP": {"Secteur": "Banking", "Nom Officiel": "BNP PARIBAS", "Adresse": "Paris (France)", "Région": "Île-de-France", "Effectif": "10 000+ salariés", "Lien": "https://annuaire-entreprises.data.gouv.fr/entreprise/662042449"},
     "BNP PARIBAS": {"Secteur": "Banking", "Nom Officiel": "BNP PARIBAS", "Adresse": "Paris (France)", "Région": "Île-de-France", "Effectif": "10 000+ salariés", "Lien": "https://annuaire-entreprises.data.gouv.fr/entreprise/662042449"},
     "SOCIETE GENERALE": {"Secteur": "Banking", "Nom Officiel": "SOCIETE GENERALE", "Adresse": "Paris (France)", "Région": "Île-de-France", "Effectif": "10 000+ salariés", "Lien": "https://annuaire-entreprises.data.gouv.fr/entreprise/552120222"},
+    "SNOWFLAKE": {"Nom Officiel": "SNOWFLAKE FRANCE", "Secteur": "Tech / Software", "Adresse": "Non renseigné", "Région": "Île-de-France"},
     "CREDIT AGRICOLE": {"Secteur": "Banking", "Nom Officiel": "CREDIT AGRICOLE SA", "Adresse": "Montrouge (France)", "Région": "Île-de-France", "Effectif": "10 000+ salariés", "Lien": "https://annuaire-entreprises.data.gouv.fr/entreprise/784608416"},
 
     # Energy
