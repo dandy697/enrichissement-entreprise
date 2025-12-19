@@ -183,6 +183,20 @@ SECTOR_CONFIG = {
     }
 }
 
+# --- Competitor Watchlist (Keyrus & Market) ---
+COMPETITORS = {
+    "ACCENTURE", "CAPGEMINI", "DELOITTE", "PWC", "EY", "KPMG", 
+    "SOPRA STERIA", "CGI", "ATOS", "WAVESTONE", "INETUM", 
+    "BUSINESS & DECISION", "ARTEFACT", "CONVERTEO", "JEMS", 
+    "MICROPOLE", "VISEO", "UMANIS", "DEVOTEAM", "TOLUNA", 
+    "BVA", "IPSOS", "KANTAR", "KEYRUS", "MCKINSEY", 
+    "BAIN", "BCG", "BOSTON CONSULTING GROUP", "KEARNEY", 
+    "OLIVER WYMAN", "ROLAND BERGER", "TCS", "TATA CONSULTANCY SERVICES", 
+    "INFOSYS", "WIPRO", "COGNIZANT", "DXC", "IBM", "GFI", 
+    "ALTRAN", "ALTEN", "AKKA", "ECONOCOM", "ONET", "TELEPERFORMANCE", 
+    "PUBLICIS SAPIENT", "VALTECH", "EKIMETRICS", "OCTO"
+}
+
 NAF_BLACKLIST = ["7010Z", "6420Z"]
 
 # --- Mappings ---
@@ -235,6 +249,7 @@ GLOBAL_OVERRIDES = {
     "BNP PARIBAS": {"Secteur": "Banking", "Nom Officiel": "BNP PARIBAS", "Adresse": "Paris (France)", "Région": "Île-de-France", "Effectif": "10 000+ salariés", "Lien": "https://annuaire-entreprises.data.gouv.fr/entreprise/662042449"},
     "SOCIETE GENERALE": {"Secteur": "Banking", "Nom Officiel": "SOCIETE GENERALE", "Adresse": "Paris (France)", "Région": "Île-de-France", "Effectif": "10 000+ salariés", "Lien": "https://annuaire-entreprises.data.gouv.fr/entreprise/552120222"},
     "SNOWFLAKE": {"Nom Officiel": "SNOWFLAKE FRANCE", "Secteur": "Tech / Software", "Adresse": "Non renseigné", "Région": "Île-de-France"},
+    "ATOS": {"Nom Officiel": "ATOS SE", "Secteur": "Consulting / IT Services", "Adresse": "Bezons (France)", "Région": "Île-de-France", "Effectif": "100 000+ salariés"},
     "CREDIT AGRICOLE": {"Secteur": "Banking", "Nom Officiel": "CREDIT AGRICOLE SA", "Adresse": "Montrouge (France)", "Région": "Île-de-France", "Effectif": "10 000+ salariés", "Lien": "https://annuaire-entreprises.data.gouv.fr/entreprise/784608416"},
 
     # Energy
@@ -345,6 +360,7 @@ NORMALIZED_OVERRIDES["GROUPAGRICA"] = "GROUPE AGRICA"
 NORMALIZED_OVERRIDES["MANOMANO"] = "COLIBRI SAS"
 NORMALIZED_OVERRIDES["COLIBRI"] = "COLIBRI SAS"
 NORMALIZED_OVERRIDES["NATIXIS-CORPORATE-INVESTMENT-BANKING"] = "NATIXIS"
+NORMALIZED_OVERRIDES["SOPRA"] = "SOPRA STERIA"
 
 def get_region_from_dept(zip_code):
     if not zip_code or len(zip_code) < 2: return "Autre"
@@ -361,7 +377,14 @@ def get_region_from_dept(zip_code):
 
 def extract_company_from_input(input_str):
     input_str = input_str.strip()
-    company = input_str
+    
+    # Pre-cleaning: If input has tabs or newlines, take the first non-empty chunk
+    if "\t" in input_str:
+        input_str = input_str.split("\t")[0]
+    if "\n" in input_str:
+        input_str = input_str.split("\n")[0]
+        
+    company = input_str.strip()
 
     if "@" in input_str and not input_str.startswith("http"):
         try:
@@ -516,7 +539,8 @@ def categorize_company_logic(raw_input):
                 "Adresse": target_override["Adresse"],
                 "Région": target_override["Région"],
                 "Effectif": target_override.get("Effectif", "Non renseigné"),
-                "Lien": manual_link
+                "Lien": manual_link,
+                "IsCompetitor": target_override.get("IsCompetitor", any(c in target_override["Nom Officiel"].upper() for c in COMPETITORS))
              }
 
         # 2. Call API
@@ -576,6 +600,16 @@ def categorize_company_logic(raw_input):
             
             if not final_sector: final_sector = "Unknown"
 
+            # Check Competitor
+            is_competitor = False
+            if official_name and any(c in official_name.upper() for c in COMPETITORS):
+                is_competitor = True
+            
+            # Additional Check: If forced_sector name matches competitor list
+            if not is_competitor and forced_sector and forced_sector.upper() in COMPETITORS:
+                 # Unlikely case but safety check
+                 pass
+
             return {
                 "Input": raw_input,
                 "Nom Officiel": official_name,
@@ -585,7 +619,8 @@ def categorize_company_logic(raw_input):
                 "Score": "100%",
                 "Adresse": address,
                 "Région": region,
-                "Lien": link_url
+                "Lien": link_url,
+                "IsCompetitor": is_competitor
             }
             
         # 4. Fallback: Web Search
@@ -600,7 +635,8 @@ def categorize_company_logic(raw_input):
                 "Détail": "Correction Utilisateur (Sans Info)",
                 "Source": "Mémoire",
                 "Score": "100%",
-                "Adresse": "-", "Région": "-", "Lien": "-"
+                "Adresse": "-", "Région": "-", "Lien": "-",
+                "IsCompetitor": any(c in company_name.upper() for c in COMPETITORS)
              }
              
         sector_web, source_web, score_web, title_web = analyze_web_content(company_name)
@@ -610,6 +646,7 @@ def categorize_company_logic(raw_input):
              final_link = f"https://annuaire-entreprises.data.gouv.fr/rechercher?q={company_name.replace(' ', '+')}"
 
         if sector_web:
+         if sector_web:
              return {
                 "Input": raw_input,
                 "Nom Officiel": title_web if title_web and len(title_web) < 60 else official_name,
@@ -619,7 +656,8 @@ def categorize_company_logic(raw_input):
                 "Score": f"{score_web}",
                 "Adresse": address if address != "Non renseigné" else "International / Web",
                 "Région": region if region != "Non renseigné" else "Monde",
-                "Lien": final_link
+                "Lien": final_link,
+                "IsCompetitor": any(c in official_name.upper() for c in COMPETITORS) or any(c in company_name.upper() for c in COMPETITORS)
              }
 
         # 5. Nothing Found
